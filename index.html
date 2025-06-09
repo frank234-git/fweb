@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FWEB | Web Designer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: #58a6ff;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #f99d1e;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: #161b22;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    #nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    #nav-links a {
+      font-weight: 600;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    /* Header */
+    header {
+      height: 80vh;
+      background: url('https://i.ibb.co/1YksVby8/5ab9e101909cf6f3c02893905a9317ff.png') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .header-content h1 {
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    .header-content p {
+      font-size: 1.2rem;
+      color: #c9d1d9;
+    }
+
+    /* About */
+    #about p {
+      font-size: 1.1rem;
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Services */
+    #services ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    #services li {
+      background: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    #services li:hover {
+      transform: scale(1.05);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: #161b22;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.5s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-card .content {
+      padding: 20px;
+    }
+
+    .project-card h3 {
+      color: #58a6ff;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #c9d1d9;
+      font-size: 0.95rem;
+    }
+.project-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: top; /* or center */
+}
+    /* Contact */
+    #contact {
+      text-align: center;
+    }
+
+    #contact p {
+      font-size: 1.1rem;
+    }
+
+    #contact img {
+      width: 32px;
+      margin: 10px auto;
+    }
+
+    /* Footer */
+    footer {
+      background: #161b22;
+      padding: 20px;
+      text-align: center;
+      color: #8b949e;
+    }
+
+    /* WhatsApp */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+    }
+
+    .whatsapp-btn img {
+      width: 60px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-btn img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      #nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: #161b22;
+        width: 100%;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      #nav-links.open {
+        max-height: 300px;
+      }
+
+      #nav-links li {
+        padding: 15px 0;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#" class="logo"><img src="https://i.ibb.co/FL3hpFKT/IMG-20250609-WA0012.jpg" alt="Logo" /><p>FEWB</p></a>
+    <div class="hamburger" id="hamburger">
+      <div></div><div></div><div></div>
+    </div>
+    <ul id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Propo</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <h1>FWEB</h1>
+      <p>Crafting modern, responsive websites that elevate brands</p>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Franklin Odiana, a passionate web designer with a flair for building modern, responsive websites.
+      My journey began with a love for technology and has grown into a career centered around creative problem-solving,
+      digital craftsmanship, and client satisfaction.
+      <br><br>
+      Whether it’s a startup, business, or personal brand, I strive to deliver high-quality designs that bring ideas to life.
+      I'm always exploring new trends and sharing knowledge with the community.
+    </p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Services</h2>
+    <ul>
+      <li>Custom Website Design</li>
+      <li>Responsive Development</li>
+      <li>eCommerce Solutions</li>
+      <li>Website Maintenance</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="portfolio">
+    <h2>My Portfolio</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://i.ibb.co/B55fpm4m/1749479090865.jpg" alt="Project 1" />
+        <div class="content">
+          <h3>Barkdeals coupon company</h3>
+          <p style="color: #c9d1d9;">
+  A modern and playful website designed for BarkDeals, a dog coupon aggregation platform.
+  The site features a clean UI, vibrant colors, and mobile-first responsive design to help
+  pet owners easily discover and redeem the best deals on dog food, grooming, and toys.
+</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://i.ibb.co/67xSDFq3/Screenshot-20250609-174330.jpg" alt="Project 2" />
+        <div class="content">
+          <h3>DTP aluminum</h3>
+          <p style="color: #c9d1d9;">
+  A sleek and industrial-grade website created for DTP Aluminum, a company specializing in aluminum fabrication
+  and architectural solutions. The site emphasizes clean layout, metallic color accents, and responsive design to
+  showcase their products, project gallery, and service expertise with credibility and impact.
+</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:franklinodiana16@gmail.com">franklinodiana16@gmail.com</a></p>
+    <a href="https://www.linkedin.com/in/franklin-odiana-910873335" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+    </a>
+    <p>Connect with me on <a href="https://www.linkedin.com/in/franklin-odiana-910873335" target="_blank">LinkedIn</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Franklin Odiana. All rights reserved.</p>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/2348082094029" target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+  </a>
+
+  <!-- JS -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
